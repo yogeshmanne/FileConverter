@@ -1,5 +1,6 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request, send_file
 from flask_sqlalchemy import SQLAlchemy
+from io import BytesIO
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
@@ -20,3 +21,9 @@ def index():
         db.session.commit()
         return f'File has been Uploaded : {file.filename}'
     return render_template('index.html')
+
+@app.route('/download/<upload_id>')
+def download(upload_id):
+    upload= Upload.query.filter_by(id=upload_id).first()
+
+    
