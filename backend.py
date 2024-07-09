@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 driver = '{ODBC Driver 17 for SQL Server}'
-server = 'VENKEY\\SQLEXPRESS'  # Note the double backslash to escape the backslash
+server = 'VENKEY\\SQLEXPRESS'  
 database = 'file converter'
 username = 'sa'
 password = '223355'
