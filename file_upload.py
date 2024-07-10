@@ -11,8 +11,7 @@ def process_file(file_path):
         df = pd.read_excel(file_path)
     elif file_extension == '.json':
         df = pd.read_json(file_path)
-    elif file_extension == '.txt':  # Add support for text files (.txt)
-        # Assuming text file is tab-separated, adjust delimiter as needed
+    elif file_extension == '.txt': 
         df = pd.read_csv(file_path, delimiter='\t')
     else:
         raise ValueError("Unsupported file format: Only CSV, Excel, JSON, and TXT files are supported.")
