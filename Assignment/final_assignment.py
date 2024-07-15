@@ -43,10 +43,10 @@ layout = [
 window = sg.Window('User Data Form', layout, resizable=True, finalize=True)
 
 file_count = {
-    'json': 1,
-    'txt': 1,
-    'xml': 1,
-    'xlsx': 1
+    'json': 0,
+    'txt': 0,
+    'xml': 0,
+    'xlsx': 0,
 }
 
 def clear_input():
