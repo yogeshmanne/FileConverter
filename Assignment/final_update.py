@@ -1,9 +1,9 @@
 import tkinter as tk
+import os 
+import json
 from tkinter import messagebox, filedialog
 import openpyxl
 from openpyxl import Workbook
-import os
-import json
 import xml.etree.ElementTree as ET
 
 excel_file = r"C:\Users\Yogesh M\Documents\GitHub\FileConverter\Assignment\data.xlsx"
@@ -24,8 +24,9 @@ def clear_input():
     name_entry.delete(0, tk.END)
     email_entry.delete(0, tk.END)
     phone_entry.delete(0, tk.END)
-    for var in branch_vars.values():
-        var.set(False)
+    engineering_var.set(False)
+    medical_var.set(False)
+    degree_var.set(False)
 
 def save_as_json(data, file_path):
     with open(file_path, 'w') as f:
@@ -102,15 +103,17 @@ def exit_application():
     root.quit()
 
 root = tk.Tk()
-root.title("User Data Form")
-root.configure(background="#f0f0f0")
+root.title("Form")
+root.configure(background="#a8a232")  
+label= tk.Label(root,text="User Data Form",font=("Roboto",35))
+label.pack()
 
-frame = tk.Frame(root, bg="#f0f0f0")
-frame.pack(padx=10, pady=10)
+frame = tk.Frame(root, bg="#a8a232")
+frame.pack(padx=100, pady=100)
 
-name_label = tk.Label(frame, text="Name", font=("Arial", 20), bg="#f0f0f0")
+name_label = tk.Label(frame, text="Name", font=("Arial", 20))
 name_label.grid(row=0, column=0, padx=10, pady=10, sticky=tk.W)
-name_entry = tk.Entry(frame, font=("Helvetica", 15), bg="#ffffff")
+name_entry = tk.Entry(frame, font=("Helvetica", 15))
 name_entry.grid(row=0, column=1, padx=10, pady=10)
 
 email_label = tk.Label(frame, text="Email ID", font=("Arial", 20), bg="#f0f0f0")
@@ -144,18 +147,16 @@ file_format_var = tk.StringVar(value='json')
 file_format_label = tk.Label(frame, text="File Format", font=("Arial", 20), bg="#f0f0f0")
 file_format_label.grid(row=4, column=0, padx=10, pady=10, sticky=tk.W)
 file_format_menu = tk.OptionMenu(frame, file_format_var, 'json', 'txt', 'xml', 'xlsx')
-file_format_menu.grid(row=4, column=3, padx=10, pady=10)
+file_format_menu.grid(row=4, column=1, padx=10, pady=10)
 
-submit_button = tk.Button(frame, text="Submit", command=submit_data, font=("Arial", 20), bg="#4CAF50")
-submit_button.grid(row=5, column=1, padx=10, pady=10)
+submit_button = tk.Button(frame, text="Submit", command=submit_data, font=("Arial", 20), bg="#4CAF50", fg="white")
+submit_button.grid(row=5, column=2, padx=10, pady=10)
 
-download_button = tk.Button(frame, text="Download", command=download_file, font=("Arial", 20), bg="#2196F3")
-download_button.grid(row=5, column=1, padx=10, pady=10)
+download_button = tk.Button(frame, text="Download", command=download_file, font=("Arial", 20), bg="#2196F3", fg="white")
+download_button.grid(row=5, column=0, padx=10, pady=10)
 
 clear_button = tk.Button(frame, text="Clear", command=clear_input, font=("Arial", 20), bg="#FF9800")
-clear_button.grid(row=5, column=1, columnspan=2, padx=10, pady=10)
+clear_button.grid(row=7, column=0, columnspan=2, padx=10, pady=10)
 
-exit_button = tk.Button(frame, text="Exit", command=exit_application, font=("Arial", 20), bg="#F44336")
-exit_button.grid(row=5, column=1, columnspan=2, padx=10, pady=10)
 
 root.mainloop()
