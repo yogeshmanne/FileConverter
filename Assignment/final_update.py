@@ -150,13 +150,13 @@ file_format_menu = tk.OptionMenu(frame, file_format_var, 'json', 'txt', 'xml', '
 file_format_menu.grid(row=4, column=1, padx=10, pady=10)
 
 submit_button = tk.Button(frame, text="Submit", command=submit_data, font=("Arial", 20), bg="#4CAF50", fg="white")
-submit_button.grid(row=5, column=2, padx=10, pady=10)
+submit_button.grid(row=7, column=0, padx=10, pady=10)
 
 download_button = tk.Button(frame, text="Download", command=download_file, font=("Arial", 20), bg="#2196F3", fg="white")
-download_button.grid(row=5, column=0, padx=10, pady=10)
+download_button.grid(row=7, column=1, padx=10, pady=10)
 
 clear_button = tk.Button(frame, text="Clear", command=clear_input, font=("Arial", 20), bg="#FF9800")
-clear_button.grid(row=7, column=0, columnspan=2, padx=10, pady=10)
+clear_button.grid(row=7, column=2, columnspan=2, padx=10, pady=10)
 
 
 root.mainloop()
