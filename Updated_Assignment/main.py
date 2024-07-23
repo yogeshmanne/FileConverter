@@ -1,0 +1,54 @@
+from frontend import create_window  
+from backend import create_excel_file, save_data_to_excel, download_data 
+import PySimpleGUI as sg  
+
+def main():
+    create_excel_file() 
+    window = create_window()  
+    submitted_data = []  # List will keep a track of the submitted data
+
+    while True:
+        event, values = window.read()
+
+        if event == sg.WIN_CLOSED or event == 'Exit':
+            break
+
+        if event == 'Submit':
+            name = values['name']
+            email = values['email']
+            phone = values['phone']
+
+            branches = [branch for branch in ['Engineering', 'Medical', 'Degree'] if values[branch]]
+
+            if name and email and phone and branches:
+                # If all fields are filled, save the data to Excel and update the submitted_data list
+                branch_str = ', '.join(branches) 
+                save_data_to_excel(name, email, phone, branch_str)  # Save the data to the Excel file
+                sg.popup('Data has been saved successfully!')
+                submitted_data = [{
+                    "Name": name,
+                    "Email": email,
+                    "Phone": phone,
+                    "Branch": branch_str
+                }]
+            else:
+                #Error message will be displayed if there is any missing field.
+                sg.popup('All fields are required!', title='Error')
+
+        if event == 'Clear':
+            clear_input(window, values)  
+
+        if event == 'Download':
+
+            if submitted_data:
+                #call the download function
+                file_format = values['file_format']
+                download_data(file_format, submitted_data)
+            else:
+                #If no data is entered show the error message
+                sg.popup('Enter the Data First.', title='Error')
+
+    window.close()  # Close the GUI window when done
+
+if __name__ == "__main__":
+    main()  # Run the main function
