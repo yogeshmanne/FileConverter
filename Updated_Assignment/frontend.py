@@ -37,7 +37,5 @@ def clear_input(window, values):
     for key in values:
         if key in ['name', 'email', 'phone']:
             window[key]('') 
-    
-    # Uncheck checkboxes (branches)
     for branch in ['Engineering', 'Medical', 'Degree']:
         window[branch](False)  # Set the value of the checkbox to False (unchecked)
