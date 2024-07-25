@@ -1,10 +1,10 @@
 import PySimpleGUI as sg  
 
 def create_window():
-    sg.theme('LightBrown8')  # Set a visually appealing theme
+    sg.theme('SandyBeach')  # Set a visually appealing theme
 
     layout = [
-        [sg.Text('User Data Form', size=(30, 1), justification='center', font=("Times New Roman", 25), text_color='lightgreen')],
+        [sg.Text('User Data Form', size=(30, 1), justification='center', font=("Times New Roman", 30), text_color='brown')],
         [sg.Text('', size=(1, 1))],  
         [sg.Text('Name', size=(15, 1), font=("Times New Roman", 20), justification='center'), 
          sg.InputText(key='name', font=("Times New Roman", 15))],
