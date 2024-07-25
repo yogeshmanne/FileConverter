@@ -3,7 +3,7 @@ from backend import save_data_to_excel, download_data
 import PySimpleGUI as sg
 
 def main():
-    window = create_window()  
+    window = create_window()
     submitted_data = []  # List to keep track of the submitted data
 
     while True:
@@ -38,13 +38,9 @@ def main():
             clear_input(window, values)
 
         if event == 'Download':
-            if submitted_data:
-                # Call the download function
-                file_format = values['file_format']
-                download_data(file_format, submitted_data)
-            else:
-                # If no data is entered, show the error message
-                sg.popup('Enter the Data First.', title='Error')
+            # Call the download function without passing the data parameter
+            file_format = values['file_format']
+            download_data(file_format)
 
     window.close()  # Close the GUI window when done
 
