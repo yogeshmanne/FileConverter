@@ -1,68 +1,46 @@
-This Notes comprises of the Information about Tkinter and its advantages.
+This Notes comprises of the Information about PySimpleGUI and its advantages.
 
-Tkinter is a GUI Module of Python.Tcl/Tk is not a single library but rather consists of a few distinct modules, each with separate functionality and its own official documentation. 
-Python’s binary releases also ship an add-on module together with it.Tk is a Tcl package implemented in C that adds custom commands to create and manipulate GUI widgets. Each Tk object embeds its own Tcl interpreter instance with Tk loaded into it. Tk’s widgets are very customizable, though at the cost of a dated appearance. Tk uses Tcl’s event queue to generate and process GUI events.
+PySimpleGUI is an open source, cross-platform GUI library for Python. 
+It aims to provide a uniform API for creating desktop GUIs based on Python’s Tkinter, PySide and WxPython toolkits. 
+PySimpleGUI also has a port for Remi which is useful for building GUIs for the web. 
 
-Example of a basic code :
-import tkinter
-m = tkinter.Tk()
-'''
-widgets are added here
-'''
-m.mainloop()
+PySimpleGUI supports both Python 3.x versions as well as Python 2.7 version. 
+The main port, PySimpleGUI doesn’t have any external dependencies, as Tkinter - on which it is based - is a part of Python’s standard library, and hence it needn’t be installed separately. 
 
+Install it in the current Python3 environment by the PIP installer as follows :
 
+pip3 install PySimpleGUI
 
+To verify if the library is correctly installed, enter the following statement −
 
-Advantages of using Tkinter are as follows :
+>>> import PySimpleGUI
+>>> PySimpleGUI.version
+'4.60.1 Released 22-May-2022'
 
-1. Simplicity and Easy Customisation
-2. Light-weight and Integrated Event Handling
-3.Tkinter can be easily integrated with Python libraries like pandas for data manipulation and openpyxl for Excel operations, enabling robust applications with comprehensive functionalities.
-4.Multi - OS Support 
-5.Efficient Layout Management and many more..
+Example Code :
 
-
-
-Resources and Libraries Used in the Project
-
-1. Tkinter:
-
-Purpose: Provides the graphical user interface (GUI) for the application. It is used to create windows, labels, buttons, and other interactive elements.
-
-Usage: Used for designing the main form where users input their data, select options, and interact with the application.
-
-
-2.openpyxl:
-
-Purpose: Facilitates reading from and writing to Excel files.
-
-Usage: Used to save user data to an Excel file and read data from the Excel file for exporting in other formats.
+import PySimpleGUI as psg
+layout = [[psg.Text(text='Hello World',
+   font=('Arial Bold', 20),
+   size=20,
+   expand_x=True,
+   justification='center')],
+]
+window = psg.Window('HelloWorld', layout, size=(715,250))
+while True:
+   event, values = window.read()
+   print(event, values)
+   if event in (None, 'Exit'):
+      break
+window.close()
 
 
-3.json:
+Advantages of using PySimpleGUI in the Project :
 
-Purpose: Handles JSON (JavaScript Object Notation) data serialization.
+1. PySimpleGUI provides a high-level abstraction over the more complex Tkinter, allowing you to create GUIs with fewer lines of code.
 
-Usage: Used to save user data in JSON format and to export data for download in JSON format.
+2. PySimpleGUI allows for the quick creation of layouts and GUI elements, enabling rapid prototyping and testing of ideas.
 
+3. Platform Independence and easy Integration.
 
-4.xml.etree.ElementTree:
-
-Purpose: Provides methods for creating and manipulating XML (eXtensible Markup Language) documents.
-
-Usage: Used to convert user data into XML format for export.
-
-
-5.os:
-
-Purpose: Provides a way to interact with the operating system, including file path operations.
-
-Usage: Used to handle file paths and check for the existence of files.
-
-
-6.tkinter.filedialog:
-
-Purpose: Provides a dialog box for file selection and saving.
-
-Usage: Used to prompt users to choose the file path and name for saving data in different formats.
+4. Clear and Organised Code 
